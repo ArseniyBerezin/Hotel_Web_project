@@ -1,0 +1,156 @@
+{% extends 'rooms/base.html' %}
+{% load static %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static '/css/base_styles.css' %}">
+	<link rel="stylesheet" href="static/css/main.css">
+{% endblock %}
+
+
+<!doctype html>
+
+<body>
+
+
+{% block information %}
+	<!-- much information block -->
+	<div class="much-information-block">
+		<div class="container">
+			<h1>HOTEL INTERNATIONAL</h1>
+
+			<div class="much-information-rows">
+				<div class="much-information-row">
+					<img src="static/imgs/row-1.png"/>
+					<div class="much-information-additionalInformation">
+						<p>Качество обслуживания</p>
+						<p class="much-information-description">Проводить время с близкими полезно для всех. Дорожите ими
+							создавайте воспоминания со своей семьей.</p>
+					</div>
+				</div>
+
+				<div class="much-information-row">
+					<img src="static/imgs/row-2.png"/>
+					<div class="much-information-additionalInformation">
+						<p>Удобное расположение</p>
+						<p class="much-information-description">Гостиница находится в центральной части города, поэтому вы
+							пешком сможете посмотреть основные достопримечательности города, что является весомым
+							преимуществом.</p>
+					</div>
+				</div>
+
+				<div class="much-information-row">
+					<img src="static/imgs/row-3.png"/>
+					<div class="much-information-additionalInformation">
+						<p>Демократичные цены</p>
+						<p class="much-information-description">Совместите бизнес и отдых для идеального пребывания.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="much-information-bigRow">
+				<div class="much-information-bigRowContainer">
+					<img src="static/imgs/row-4.png"/>
+					<div class="much-information-additionalInformation">
+						<p>HOTEL <br/> INTERNATIONAL</p>
+						<p class="much-information-description">Наслаждайтесь комфортом и удобством в наших номерах, а также
+							бесплатным завтраком каждое утро. Наш шеф-повар готовит только изысканные и свежие продукты,
+							чтобы удовлетворить все ваши вкусовые предпочтения. Расположенный в удобном месте, наш отель
+							является идеальным выбором для деловых и туристических поездок.</p>
+
+						<div class="buttonContainer">
+							<button href="#">О нас</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- much information block end -->
+{% endblock %}
+
+{% block adversting %}
+	<!-- adversting -->
+	<div class="adversting-image">
+		<h1>Спецпредложение</h1>
+		<img src="static/imgs/adversting.png"/>
+	</div>
+
+	<div class="container">
+		<div class="adversting-rows">
+			<div class="adversting-row">
+				<p>КЕШБЭК ДЛЯ УЧАСТНИКОВ ПРОГРАММЫ ЛОЯЛЬНОСТИ КАРТЫ «
+					<mark class="mir">МИР</mark>
+					»
+				</p>
+				<p>Специальное предложение для участников программы лояльности держателей карты «Мир». Получите кешбэк за
+					проживание в нашем отеле.</p>
+			</div>
+			<img src="static/imgs/mir.png"/>
+		</div>
+	</div>
+	<!-- adversting end -->
+{% endblock %}
+
+{% block location %}
+	<!-- location -->
+	<div class="container">
+		<div class="location-container">
+			<p class="location-header">Расположение</p>
+			<p class="location-address">Москва, Хамовники, Смоленская улица, 5</p>
+
+			<div class="location-rows">
+				<!-- что вокруг -->
+				<div class="location-row">
+					<p class="location-row-header">Что вокруг</p>
+					<ul class="location-list">
+						<li><img src="static/imgs/HouseVector.png" /> Дом Мельникова • 640 м</li>
+						<li><img src="static/imgs/HouseVector.png" /> Арбат • 890 м</li>
+						<li><img src="static/imgs/HouseVector.png" /> Горбатый мост • 1.2 км</li>
+						<li><img src="static/imgs/PictureVector.png" /> Мультимедиа Арт Музей • 1.2 км</li>
+						<li><img src="static/imgs/PictureVector.png" />Музей Москвы • 1.3 км</li>
+						<li><img src="static/imgs/PictureVector.png" />Музей-усадьба Л. Н. Толстого • 1.3 км</li>
+					</ul>
+				</div>
+
+				<!-- Достопримечательности -->
+				<div class="location-row">
+					<p class="location-row-header">Достопримечательности</p>
+					<ul class="location-list">
+						<li><img src="static/imgs/HouseVector.png" /> Московский Кремль • 2.0 км</li>
+						<li><img src="static/imgs/TreeVector.png" />Парк Горького • 2.3 км</li>
+						<li><img src="static/imgs/PictureVector.png" /> Государственная Третьяковская галерея • 2.5 км</li>
+						<li><img src="static/imgs/HouseVector.png" /> Красная площадь • 2.7 км</li>
+						<li><img src="static/imgs/CupVector.svg" />Москва-Сити • 2.7 км</li>
+						<li><img src="static/imgs/ChurchVector.svg" />Собор Василия Блаженного • 2.8 км</li>
+					</ul>
+				</div>
+
+				<!-- Аэропорты -->
+				<div class="location-row">
+					<p class="location-row-header">Аэропорты</p>
+					<ul class="location-list">
+						<li><img src="static/imgs/AirplaneVector.svg" /> Внуково • 24.1 км</li>
+						<li><img src="static/imgs/AirplaneVector.svg" />Шереметьево • 26.7 км</li>
+						<li><img src="static/imgs/AirplaneVector.svg" />Жуковский • 40.4 км</li>
+						<li><img src="static/imgs/AirplaneVector.svg" />Домодедово • 42.0 км</li>
+					</ul>
+				</div>
+
+				<!-- Вокзалы -->
+				<div class="location-row">
+					<p class="location-row-header">Вокзалы</p>
+					<ul class="location-list">
+						<li><img src="static/imgs/TrainVector.svg" />Киевский вокзал • 990 м</li>
+						<li><img src="static/imgs/TrainVector.svg" />Аэроэкспресс во Внуково • 990 м</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- location end -->
+{% endblock %}
+
+
+</body>
+</html>

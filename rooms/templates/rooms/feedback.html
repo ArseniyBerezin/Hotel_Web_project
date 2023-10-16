@@ -1,0 +1,120 @@
+{% extends 'rooms/base.html' %}
+{% load static %}
+
+
+
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	{% block css %}
+	<link rel="stylesheet" href="{% static '/css/feedback.css' %}">
+	<link rel="stylesheet" href="{% static '/css/base_styles.css' %}">
+	<link rel="stylesheet" href="{% static '/css/main.css' %}">
+	{% endblock %}
+	<script src="{% static 'js/feedback.js' %}"></script>
+
+
+</head>
+<body>
+{% block information %}
+<!-- main -->
+<div class="container">
+	<div class="feedback-main">
+		<div class="top-logo">
+			<img src="{% static '/imgs/top_logo.png' %}"/>
+		</div>
+
+		<h2 class="feedback-header">Обратная связь</h2>
+		<p class="feedback-description">Мы на связи круглосуточно. Чем мы можем помочь?</p>
+
+		<div class="feedback-blocks">
+			<div class="feedback-block">
+				<span class="feedback-block-icon"><img src="{% static '/imgs/MessagesVector.svg' %}"/></span>
+				<div>
+					<h3>Написать нам сообщение</h3>
+					<p>Свяжитесь с нами по поводу бронирования, и наши специалисты свяжутся с вами как можно скорее.</p>
+				</div>
+			</div>
+			<div class="feedback-block">
+				<span class="feedback-block-icon"><img src="{% static '/imgs/CallVector.svg' %}"/></span>
+				<div>
+					<h3>Позвоните нам</h3>
+					<p>Срочные проблемы всегда можно решить, позвонив понациональному или международному номеру
+						телефона.</p>
+				</div>
+			</div>
+			<div class="feedback-block">
+				<span class="feedback-block-icon"><img src="{% static '/imgs/HouseVector.svg' %}"/></span>
+				<div>
+					<h3>Свяжитесь с объектом размещения</h3>
+					<p>Персонал отеля всегда готов ответить на ваши вопросы о проживании.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- main end -->
+
+<!-- support center block -->
+<div class="support-center-block">
+	<div class="container">
+		<h1>Наш Центр поддержки</h1>
+
+		<div class="support-center-row">
+			<div class="support-center-dot">1</div>
+			<div class="support-center-information">
+				<h2>Персональный подход к каждому гостю</h2>
+				<p>Поделитесь своей проблемой, и мы расскажем, как поступить.</p>
+			</div>
+		</div>
+
+		<div class="support-center-row">
+			<div class="support-center-dot">2</div>
+			<div class="support-center-information">
+				<h2>Обращайтесь в любое время</h2>
+				<p>Напишите нам или позвоните — наши сотрудники готовы помочь круглосуточно.</p>
+			</div>
+		</div>
+
+		<div class="support-center-row">
+			<div class="support-center-dot">3</div>
+			<div class="support-center-information">
+				<h2>Вся важная информация в одном разделе</h2>
+				<p>Позвоните или напишите в объект размещения и узнайте необходимую информацию о проживании.</p>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- support center block end -->
+
+<!-- FAQ -->
+<div class="faq-block">
+	<div class="container">
+		<h1>Часто задаваемые вопросы</h1>
+
+		<div class="faq-list">
+			<span data-target="cancelBooking">Можно ли отменить бронирование</span>
+			<div id="cancelBooking" class="closedFaqContent"></div>
+
+			<span data-target="payForCancel">Если мне нужно отменить бронирование, придется ли платить штраф за его отмену?</span>
+			<div id="payForCancel" class="closedFaqContent"></div>
+
+			<span data-target="prePayment">Кто и когда спишет предоплату с моей кредитной карты?</span>
+			<div id="prePayment" class="closedFaqContent"></div>
+
+			<span data-target="debitedFunds">Почему с меня списали средства?</span>
+			<div id="debitedFunds" class="closedFaqContent"></div>
+
+			<span data-target="canOrder">Могу ли я оформить бронирование без кредитной карты?</span>
+			<div id="canOrder" class="closedFaqContent"></div>
+		</div>
+	</div>
+</div>
+<!-- FAQ end -->
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+{% extends 'rooms/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/base_styles.css">
+	<link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/about.css">
+{% endblock %}
+
+
+
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+
+{% block information %}
+<!-- much information block -->
+<div class="much-information-block">
+
+  <div class="main-container_1">
+    <h1 class="main-container-h1">Наши преимущества</h1>
+    <hr class="main-line">
+
+    <div class="main-container-cards">
+      <div class="main-container-card">
+        <img src="/static/imgs/Наушники.png" alt="" width="127" height="127">
+        <h2>Доступность</h2>
+        <p>Гостиницы доступны для всех</p>
+      </div>
+
+      <div class="main-container-card">
+        <div class="main-container-card-img">
+          <img src="/static/imgs/Геолокация.png" alt="" width="127" height="127">
+        </div>
+        <h2>Удобное расположение</h2>
+        <p>Рядом с вокзалами и аэропортами</p>
+      </div>
+
+      <div class="main-container-card">
+        <img src="/static/imgs/Лайк.png" alt="" width="127" height="127">
+        <h2>Качество</h2>
+        <p>Комфортное проживание</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container_2">
+    <h1 class="main-container-h1">Номер нашей гостиницы</h1>
+    <hr class="main-line">
+
+    <div class="main-container-cards">
+      <div class="main-container-card_1">
+        <img class="img-hotel" src="/static/imgs/Люкс.jpg" alt="" width="220" height="150">
+        <h2>"Холодное сердце"</h2>
+        <p>Люкс</p>
+        <button class="top-banner-findBtn">Подробнее</button>
+      </div>
+
+      <div class="main-container-card_2">
+        <img class="img-hotel" src="/static/imgs/Стандарт.jpg" alt="" width="220" height="150">
+        <h2>"Золотая спальня"</h2>
+        <p>Стандарт</p>
+        <button class="top-banner-findBtn">Подробнее</button>
+      </div>
+
+      <div class="main-container-card_3">
+        <img class="img-hotel" src="/static/imgs/Эконом.jpg" alt="" width="220" height="150">
+        <h2>"Удобство"</h2>
+        <p>Эконом</p>
+        <button class="top-banner-findBtn">Подробнее</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="main-container_3">
+    <h1 class="main-container-h1">Почему выбирают нас</h1>
+    <hr class="main-line">
+
+    <div class="main-container-rowspan">
+      <div class="main-container-row">
+        <div class="">
+          <img class="img-row" src="/static/imgs/Ассортимент.jpg" alt=""   width="300" height="200">
+        </div>
+        <div class="line-row">
+          <span>1</span>
+          <hr class="line-row">
+          <p>Ассортимент</p>
+        </div>
+      </div>
+
+      <div class="main-container-row">
+        <div class="line-row_2">
+          <span>2</span>
+          <hr class="line-row">
+          <p>Сервис</p>
+        </div>
+        <div class="">
+          <img class="img-row" src="/static/imgs/Сервис.jpg" alt=""  width="300" height="200">
+        </div>
+      </div>
+
+      <div class="main-container-row">
+        <div class="">
+          <img class="img-row" src="/static/imgs/Установка.jpg" alt="" width="300" height="200">
+        </div>
+        <div class="line-row">
+          <span>3</span>
+          <hr class="line-row">
+          <p>Установка</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- much information block end -->
+{% endblock %}
+
+</body>
+</html>

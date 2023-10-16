@@ -1,0 +1,172 @@
+.feedback-main
+{
+    margin: 4rem 0;
+}
+
+.feedback-main *
+{
+    color: #000;
+}
+
+.top-logo
+{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.feedback-description
+{
+    padding-bottom: 20px;
+}
+
+.feedback-blocks
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.feedback-block
+{
+    max-width: 400px;
+    width: 400px;
+    background: #fff;
+    padding: 19px;
+    border-radius: 12px;
+    display: flex;
+}
+
+.feedback-block-icon
+{
+    padding-right: 17px;
+}
+
+.feedback-block h3
+{
+    padding-bottom: 22px;
+}
+
+.feedback-header
+{
+    padding-bottom: 10px;
+}
+
+/** support block **/
+.support-center-block
+{
+    background: #fff;
+    padding: 17px 0px;
+}
+
+.support-center-block *
+{
+    color: #000;
+}
+
+.support-center-row
+{
+    display: flex;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.support-center-dot
+{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background: #3C66A5;
+    border-radius: 50%;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px;
+    margin-right: 20px;
+}
+
+.support-center-information p
+{
+    padding-top: 7px;
+}
+
+.support-center-block h1
+{
+    padding-bottom: 15px;
+}
+
+/** support block end **/
+
+/** faq **/
+.faq-block *
+{
+    color: #000;
+}
+
+.faq-list
+{
+    max-width: 460px;
+}
+
+.faq-list > .closedFaqContent
+{
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: height 0.3s ease-in-out, opacity 0.3s 0.1s linear;
+}
+
+
+.faq-list > .closedFaqContent.active
+{
+    padding: 14px;
+    background: #fff;
+    display: block;
+    border-bottom: 1px solid #B7B7B7;
+    border-left: 5px solid #5aa2ff;
+    word-break: break-all;
+}
+
+.faq-list > .active
+{
+    height: auto;
+    opacity: 1;
+    transition: height 0.3s 0.1s ease-in-out, opacity 0.3s linear;
+}
+
+.faq-list > span:last-of-type
+{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.faq-list .closedFaqContent:last-child
+{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.faq-list span
+{
+    padding: 14px;
+    background: #fff;
+    display: block;
+    border-bottom: 1px solid #B7B7B7;
+}
+
+.faq-list span:first-child
+{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.faq-list span:last-child
+{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.faq-block h1
+{
+    margin: 2rem 0px;
+}
+
+/** faq end **/
