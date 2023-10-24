@@ -1,0 +1,52 @@
+{% extends 'rooms/base.html' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/indetail.css' %}">
+    <link rel="stylesheet" href="{% static '/css/base_styles.css' %}">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Подробная информация о номере</title>
+</head>
+<body>
+    <header>
+        <!-- Ваш код для хедера -->
+    </header>
+
+{% block information %}
+
+<main>
+    <section class="rooms">
+        <article class="room-details">
+            <div class="room-photo">
+                <img src="{{ room_id.room_image.url }}" alt="Фотография номера">
+            </div>
+            <div class="room-description">
+                <h2>{{ room_id.name }}</h2>
+                <p>{{ room_id.full_description }}</p>
+                <button class="reserve-button">Забронировать</button>
+                <div class="expandable-text">
+                    <h3>Дополнительная информация</h3>
+                    <p></p>
+                </div>
+            </div>
+        </article>
+    </section>
+</main>
+
+{% endblock %}
+
+
+    <footer>
+        <!-- Ваш код для футера -->
+    </footer>
+</body>
+</html>

@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
-from hotel.models import Room
+from hotel.models import Room, Categories
 
 
 def index(request):
@@ -27,6 +27,15 @@ def feedback(request):
 def hotel_rooms(request):
     context = {
         'title': 'номера отеля',
-        'hotel_rooms': Room.objects.all(),
+        'Room': Room.objects.all(),
+        'Categories': Categories.objects.all(),
     }
     return render(request, 'rooms/hotelrooms.html', context)
+
+
+def in_detail_room(request, room_id):
+    context = {
+        'Room': Room.objects.all(),
+        'room_id': get_object_or_404(Room, id=room_id),
+    }
+    return render(request, 'rooms/indetail.html', context)
