@@ -35,7 +35,10 @@
                 <button class="reserve-button">Забронировать</button>
                 <div class="expandable-text">
                     <h3>Дополнительная информация</h3>
-                    <p></p>
+                    <p>{{ room_id.name }}</p>
+                    <p>Цена: {{ room_id.price_night }}</p>
+                    <p>Персон: {{ room_id.number_of_persons }}</p>
+                    <p>Количество кроватей: {{ room_id.number_of_beds }}</p>
                 </div>
             </div>
         </article>

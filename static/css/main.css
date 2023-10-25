@@ -1,32 +1,32 @@
 /** top banner **/
-/*.top-banner-block*/
-/*{*/
-/*    background-image: url('../imgs/top.png');*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: cover;*/
-/*}*/
+.top-banner-block
+{
+    background-image: url('../imgs/top.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-/*.top-banner-block .container*/
-/*{*/
-/*    padding: 30px 0;*/
-/*}*/
+.top-banner-block .container
+{
+   padding: 30px 0;
+}
 
 .top-logo
 {
     text-align: center;
 }
 
-/*.top-banner-informationContainer*/
-/*{*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    padding: 30px;*/
-/*    justify-content: center;*/
-/*    background: rgba(255, 255, 255, 0.7);*/
-/*    border-radius: 12px;*/
-/*    margin: 24px 0px;*/
-/*    align-items: end;*/
-/*}*/
+.top-banner-informationContainer
+{
+   display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    margin: 24px 0px;
+    align-items: end;
+}
 
 .top-banner-row
 {

@@ -53,13 +53,13 @@
 }
 
 .expandable-text h3 {
-    font-size: 28px; /* 2 раза больше */
+    font-size: 20px; /* 2 раза больше */
     font-weight: bold;
     margin-bottom: 20px; /* Увеличено в 2 раза */
 }
 
 .expandable-text p {
-    font-size: 20px; /* 2 раза больше */
+    font-size: 13px; /* 2 раза больше */
     margin-top: 20px;
-    display: none; /* Скрыть изначально */
+
 }

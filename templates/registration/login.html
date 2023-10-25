@@ -1,0 +1,26 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="{% static '/css/users.css' %}"> <!-- Подключаем CSS-стили -->
+</head>
+<body>
+    <div class="login-form">
+        <h2>Авторизация</h2>
+        <form action="/login" method="post">
+            {% csrf_token %}
+            <label for="username_email">Username или Email:</label>
+            <input type="text" id="username_email" name="username_email">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <button type="submit">Войти</button>
+            {{ form.errors }}
+        </form>
+        <a href="/register">Нет аккаунта? Зарегистрируйтесь</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+/* Стили для профиля пользователя (profile.html) */
+.profile {
+    text-align: center;
+    padding: 20px;
+    bold: normal;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile_sec {
+    margin-left: 20px;
+    background-color: #3C66A5;
+    padding: 40px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+/* Стили для регистрации (registration.html) и авторизации (login.html) */
+.registration-form, .login-form {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.registration-form h2, .login-form h2 {
+    margin: 0;
+}
+
+.registration-form form, .login-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form label, .login-form label {
+    margin-top: 10px;
+}
+
+.registration-form input, .login-form input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.registration-form button, .login-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.registration-form button:hover, .login-form button:hover {
+    background-color: #0056b3;
+}
+
+.registration-form a, .login-form a {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff;
+    display: block;
+}
+
+

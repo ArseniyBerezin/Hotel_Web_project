@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="{% static '/css/users.css'%}"> <!-- Подключаем CSS-стили -->
+</head>
+<body>
+    <section class="profile_sec">
+        <div class="profile">
+            <img src="user_avatar.jpg" alt="Фото пользователя">
+            <h2>{{ user.username }}</h2>
+            <p>Email: user@example.com</p>
+            <p>Возраст: 25 лет</p>
+            <a href="/">Главная</a>
+            <button class="button-logout" onclick="location.href={% url 'index' %}?next=/accounts/login/?next=/profile">Выйти</button>
+        </div>
+    </section>
+</body>
+</html>

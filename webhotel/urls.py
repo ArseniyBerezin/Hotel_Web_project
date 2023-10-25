@@ -9,6 +9,8 @@ from hotel import views as hotels_views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("hotel.urls")),
+    path("", include("users.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
 
 if settings.DEBUG:
