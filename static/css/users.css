@@ -19,6 +19,13 @@
     color: #fff;
 }
 
+.custom-file input{
+    margin-left: 20px;
+    background-color: #3C66A5;
+    padding: 40px;
+    border-radius: 10px;
+}
+
 /* Стили для регистрации (registration.html) и авторизации (login.html) */
 .registration-form, .login-form {
     max-width: 300px;

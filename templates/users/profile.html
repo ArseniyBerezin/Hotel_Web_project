@@ -5,17 +5,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Профиль пользователя</title>
-    <link rel="stylesheet" href="{% static '/css/users.css'%}"> <!-- Подключаем CSS-стили -->
+    <link rel="stylesheet" href="{% static '/css/users.css'%}">
 </head>
 <body>
     <section class="profile_sec">
         <div class="profile">
-            <img src="user_avatar.jpg" alt="Фото пользователя">
-            <h2>{{ user.username }}</h2>
-            <p>Email: user@example.com</p>
-            <p>Возраст: 25 лет</p>
-            <a href="/">Главная</a>
-            <button class="button-logout" onclick="location.href={% url 'index' %}?next=/accounts/login/?next=/profile">Выйти</button>
+            <div class="profile-image">
+                <img width="100" height="100"
+                        src="{% if user.image %}
+                                {{ user.image.url }}
+                             {% else %}
+                                {% static 'imgs/NULL_IMAGE.png' %}
+                             {% endif %}">
+            </div>
+                <form action="{% url 'profile' %}" method="post">
+                    {% csrf_token %}
+
+                    <label for="{{ form.image.id_for_label }}" class="custom-file input">Фото</label>
+                    {{ form.image }}
+
+                     <label for="{{ form.username.id_for_label }}" class="form-control py-3">Имя пользователя</label>
+                    {{ form.username }}
+
+                    <label for="{{ form.first_name.id_for_label }}" class="form-control py-3">Имя</label>
+                    {{ form.first_name }}
+
+                    <label for="{{ form.last_name.id_for_label }}" class="form-control py-3">Фамилия</label>
+                    {{ form.last_name }}
+
+                    <label for="{{ form.email.id_for_label }}" class="form-control py-3">Email:</label>
+                    {{ form.email }}
+                    <button class="button-logout">Выйти</button>
+                </form>
         </div>
     </section>
 </body>
