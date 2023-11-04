@@ -18,7 +18,7 @@
 
 .top-banner-informationContainer
 {
-   display: flex;
+    display: flex;
     flex-wrap: wrap;
     padding: 30px;
     justify-content: center;

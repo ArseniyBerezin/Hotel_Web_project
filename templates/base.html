@@ -14,35 +14,36 @@
 <div class="nav-container">
 	<div class="container">
 		<nav>
-			<ul class="navbar-left">
-				<a href="{% url 'index' %}">
-					<li>Русский язык</li>
-				</a>
-			</ul>
-			<ul class="navbar-right">
-				<a href="{% url 'index' %}" style="font-weight: bold">
-					<li>Главная</li>
-				</a>
-				<a href="{% url 'hotelrooms' %}">
-					<li>Доступные номера</li>
-				</a>
-				<a href="#">
-					<li>Наши социальные сети</li>
-				</a>
-				<a href="{% url 'feedback' %}">
-					<li>Контакты</li>
-				</a>
-				<a href="{% url 'about' %}">
-					<li>О нас</li>
-				</a>
-				{% if user.is_authenticated %}
-    				<a href="{% url 'profile' %}">Профиль</a>
-				{% else %}
-					<li><a href="{% url 'registration' %}" >Регистрация</a> | <a href="{% url 'login' %}" >Войти</a></li>
-				{% endif %}
-
-
-			</ul>
+				<ul class="navbar-left">
+					<a href="{% url 'index' %}">
+						<li>Русский язык</li>
+					</a>
+				</ul>
+			<form action="{% url 'index' %}" method="post">
+				{% csrf_token %}
+				<ul class="navbar-right">
+					<a href="{% url 'index' %}" style="font-weight: bold">
+						<li>Главная</li>
+					</a>
+					<a href="{% url 'hotelrooms' %}">
+						<li>Доступные номера</li>
+					</a>
+					<a href="#">
+						<li>Наши социальные сети</li>
+					</a>
+					<a href="{% url 'feedback' %}">
+						<li>Контакты</li>
+					</a>
+					<a href="{% url 'about' %}">
+						<li>О нас</li>
+					</a>
+					{% if user.is_authenticated %}
+						<a href="{% url 'profile' %}">Профиль</a>
+					{% else %}
+						<li><a href="{% url 'registration' %}" >Регистрация</a> | <a href="{% url 'login' %}" >Войти</a></li>
+					{% endif %}
+				</ul>
+			</form>
 		</nav>
 	</div>
 </div>
@@ -54,32 +55,9 @@
 		<div class="top-logo">
 			<img src="{% static '/imgs/top_logo.png' %}"/>
 		</div>
-
-<!--        Тут все через форму надо делать    -->
-
-		<div class="top-banner-informationContainer">
-			<div class="top-banner-row">
-				<p>Город</p>
-				<input type="text" placeholder="Москва">
-			</div>
-			<div class="top-banner-row">
-				<p>Заезд</p>
-				<input type="text" placeholder="01.01.1970">
-			</div>
-			<div class="top-banner-row">
-				<p>Выезд</p>
-				<input type="text" placeholder="01.01.1970">
-			</div>
-			<div class="top-banner-row">
-				<p>Комнаты и гости</p>
-				<input type="text" placeholder="1 номер(-а), 2 Гостя">
-			</div>
-			<div>
-				<button class="top-banner-findBtn">Найти</button>
-			</div>
-		</div>
 	</div>
 </div>
+
 <!-- top banner end -->
 
 {% block information %} {% endblock %}

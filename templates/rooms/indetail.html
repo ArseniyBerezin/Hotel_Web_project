@@ -1,4 +1,4 @@
-{% extends 'rooms/base.html' %}
+{% extends 'base.html' %}
 
 {% load static %}
 
@@ -37,7 +37,7 @@
                     <h3>Дополнительная информация</h3>
                     <p>{{ room_id.name }}</p>
                     <p>Цена: {{ room_id.price_night }}</p>
-                    <p>Персон: {{ room_id.number_of_persons }}</p>
+                    <p>Персон: {{ room_id.guests }}</p>
                     <p>Количество кроватей: {{ room_id.number_of_beds }}</p>
                 </div>
             </div>

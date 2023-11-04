@@ -1,4 +1,4 @@
-{% extends 'rooms/base.html' %}
+{% extends 'base.html' %}
 
 {% load static %}
 
@@ -41,7 +41,7 @@
                         <div class="room-text">
                             <p>Краткое описание номера стандартного класса.</p>
                             <p>Цена: {{ rooms.price_night }}$/ночь</p>
-                            <p>Персон: {{ rooms.number_of_persons }}</p>
+                            <p>Персон: {{ rooms.guests }}</p>
                             <p>Количество кроватей:{{ rooms.number_of_beds }}</p>
                             <li><a href="{% url 'indetail' rooms.id %}">Перейти</a></li>
                         </div>

@@ -1,4 +1,4 @@
-{% extends 'rooms/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block css %}
@@ -13,6 +13,41 @@
 
 
 {% block information %}
+<div class="top-banner-block">
+	<div class="top-banner-informationContainer">
+		<form method="post" action="{% url 'search_result' %}">
+			{% csrf_token %}
+
+			<div class="top-banner-row">
+				<label for="id_class_room">Класс номера</label>
+				<select id="id_class_room" name="class_room">
+					{% for choice in type_choices %}
+						<option value="{{ choice.0 }}">{{ choice.1 }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="top-banner-row">
+				<label for="check_in">Заезд</label>
+				<input type="date" id="check_in" name="check_in" placeholder="01.01.1970">
+			</div>
+			<div class="top-banner-row">
+				<label for="check_out">Выезд</label>
+				<input type="date" id="check_out" name="check_out" placeholder="01.01.1970">
+			</div>
+			<div class="top-banner-row">
+				<label for="{{ form.guests.id_for_label }}">Персоны</label>
+				<select id="{{ form.guests.id_for_label }}" name="guests">
+					{% for choice in persons_choices %}
+						<option value="{{ choice.0 }}">{{ choice.1 }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div>
+				<button type="submit" class="top-banner-findBtn">Найти</button>
+			</div>
+		</form>
+	</div>
+</div>
 	<!-- much information block -->
 	<div class="much-information-block">
 		<div class="container">
