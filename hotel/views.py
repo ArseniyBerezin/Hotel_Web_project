@@ -56,10 +56,10 @@ def search_results(request):
         print("POST")
         if form.is_valid():
             print("Valid")
-            class_room = form.cleaned_data['class_room']
+            room_class = form.cleaned_data['room_class']
             guests = form.cleaned_data['guests']
-            if class_room:
-                rooms = rooms.filter(class_room=class_room)
+            if room_class:
+                rooms = rooms.filter(room_class=room_class)
             if guests:
                 rooms = rooms.filter(guests=guests)
 

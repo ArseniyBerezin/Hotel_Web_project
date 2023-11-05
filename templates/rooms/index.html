@@ -19,8 +19,8 @@
 			{% csrf_token %}
 
 			<div class="top-banner-row">
-				<label for="id_class_room">Класс номера</label>
-				<select id="id_class_room" name="class_room">
+				<label for="id_room_class">Класс номера</label>
+				<select id="id_room_class" name="room_class">
 					{% for choice in type_choices %}
 						<option value="{{ choice.0 }}">{{ choice.1 }}</option>
 					{% endfor %}
