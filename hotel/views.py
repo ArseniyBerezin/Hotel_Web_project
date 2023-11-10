@@ -1,7 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
 from hotel.models import Room, Categories
 from .forms import SearchForm
-from django.urls import reverse
 
 
 def about(request):
@@ -19,10 +18,14 @@ def feedback(request):
 
 
 def hotel_rooms(request):
+    room = Room.objects.all()
+    categories = Categories.objects.all()
+
     context = {
-        'Room': Room.objects.all(),
-        'Categories': Categories.objects.all(),
+        'Room': room,
+        'Categories': categories,
     }
+
     return render(request, 'rooms/hotelrooms.html', context)
 
 
@@ -66,7 +69,7 @@ def search_results(request):
     context = {
         'room': rooms,
         'form': form,
-        'Room': Room.objects.all()
+        'Room': Room.objects.all(),
     }
 
     return render(request, 'rooms/search_result.html', context)

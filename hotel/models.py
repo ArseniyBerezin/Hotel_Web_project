@@ -20,6 +20,7 @@ class Room(models.Model):
         (TYPE_LUXE, "Люкс"),
         (TYPE_LUXE_VIP, "Люкс VIP"),
     )
+
     PERSON_1 = "1 чел."
     PERSON_2 = "2 чел."
     PERSON_3 = "3 чел."
@@ -33,6 +34,13 @@ class Room(models.Model):
         (PERSON_5, "5 чел."),
     )
 
+    RESERVATION_TRUE = 0
+    RESERVATION_FALSE = -1
+    reservation_choices = (
+        (RESERVATION_TRUE, 0),
+        (RESERVATION_FALSE, -1),
+    )
+
     name = models.CharField(max_length=256)
     room_class = models.CharField(max_length=256, choices=type_choices)
     guests = models.CharField(max_length=256, choices=persons_choices)
@@ -41,9 +49,19 @@ class Room(models.Model):
     room_image = models.ImageField(upload_to="rooms_image", blank=True, null=True)
     price_night = models.PositiveIntegerField(validators=[MinValueValidator(10), MaxValueValidator(10000)])
     full_description = models.TextField(max_length=2048)
+    reservation = models.IntegerField(choices=reservation_choices)
+
+    def save(self, *args, **kwargs):
+        if self.reservation == -1:
+            free_rooms_count = Room.objects.filter(room_class=self.room_class, reservation=-1).count()
+            category_instance, created = Categories.objects.get_or_create(name=self.room_class)
+            category_instance.free_rooms = free_rooms_count
+            category_instance.save()
+
+        super(Room, self).save(*args, **kwargs)
 
     def __str__(self):
-        return f"№{self.pk}: Комната '{self.name}' типа {self.room_class} | цена/ночь: {self.price_night}"
+        return f"№{self.pk}: Комната '{self.name}' типа {self.room_class} | цена/ночь: {self.price_night} | Бронь: {self.reservation}"
 
 
 class Categories(models.Model):
@@ -65,8 +83,9 @@ class Categories(models.Model):
     )
 
     name = models.CharField(max_length=64, choices=type_choices)
+    free_rooms = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"Категория:{self.name}"
+        return f"Категория:{self.name} | Свободных данной категории: {self.free_rooms}"
 
 
