@@ -18,10 +18,14 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.room h2 {
+.rooms h2 {
     font-size: 20px;
     margin-bottom: 10px;
     color: #3C66A5;
+}
+
+.rooms h1 {
+
 }
 
 .room-info {

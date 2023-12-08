@@ -9,6 +9,11 @@
 </head>
 <body>
     <div class="registration-form">
+        {% if form.errors %}
+            <div class="registration-error">
+                {{ form.errors }}
+            </div>
+        {% endif %}
         <h2>Регистрация</h2>
         <form action="/registration" method="post">
             {% csrf_token %}

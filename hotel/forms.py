@@ -19,3 +19,21 @@ class SearchForm(forms.Form, ModelForm):
     class Meta:
         model = Room
         fields = ('room_class', 'guests')
+
+
+class BookingRoom(forms.Form, ModelForm):
+    first_name = forms.CharField(
+        label='Ваше имя'
+    )
+    last_name = forms.CharField(
+        label='Ваша фамилия'
+    )
+    email = forms.CharField(
+        label='Электронная почта'
+    )
+    checkin = forms.DateField(
+        label='Дата въезда'
+    )
+    checkout = forms.DateField(
+        label='Дата выезда'
+    )

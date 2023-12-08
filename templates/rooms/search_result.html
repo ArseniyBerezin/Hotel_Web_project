@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="{% static 'css/hotelrooms.css' %}">
     <link rel="stylesheet" href="{% static 'css/base_styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/indetail.css' %}">
 {% endblock %}
 
 <!DOCTYPE html>
@@ -17,25 +16,31 @@
 <body>
 
 {% block information %}
-    <div class="container">
+     <section class="rooms">
         <h1>Результаты поиска</h1>
-        <div class="search-results">
             {% if room %}
                 {% for rooms in room %}
-                    <div class="room-card">
-                        <img src="{{ rooms.image.url }}" alt="{{ rooms.title }}">
-                        <h2>{{ rooms.name }}</h2>
-                        <p>Категория: {{ rooms.get_room_class_display }}</p>
-                        <p>Количество гостей: {{ rooms.get_guests_display }}</p>
-                        <p>Цена: {{ rooms.price_night }} $</p>
-                        <li><a href="{% url 'indetail' rooms.id %}">Перейти</a></li>
-                    </div>
+                    <article class="room">
+                        <h2>Номер {{ rooms.room_class }}</h2>
+
+                            <div class="room-info">
+                                <div class="room-text">
+                                    <p>Краткое описание номера:</p>
+                                    <p>Цена: {{ rooms.price_night }}$/ночь</p>
+                                    <p>Персон: {{ rooms.guests }}</p>
+                                    <p>Количество кроватей:{{ rooms.number_of_beds }}</p>
+                                    <li><a href="{% url 'indetail' rooms.id %}">Перейти</a></li>
+                                </div>
+                                <div class="room-photo">
+                                    <img src="{{ rooms.room_image.url }}" alt="Фотография номера">
+                                </div>
+                            </div>
+                    </article>
                 {% endfor %}
             {% else %}
                 <p>По вашему запросу комнат не найдено.</p>
             {% endif %}
-        </div>
-    </div>
+     </section>
 {% endblock %}
 
 </body>

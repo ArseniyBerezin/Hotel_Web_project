@@ -1,6 +1,13 @@
+from django.forms import model_to_dict
 from django.shortcuts import render, get_object_or_404
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from hotel.models import Room, Categories
 from .forms import SearchForm
+
+from rest_framework import generics
+from hotel.serializers import SerializerRoom
 
 
 def about(request):
@@ -38,7 +45,6 @@ def in_detail_room(request, room_id):
 
 
 def index(request):
-
     type_choices = Room.type_choices
     persons_choices = Room.persons_choices
 
@@ -51,7 +57,6 @@ def index(request):
 
 
 def search_results(request):
-
     form = SearchForm(request.POST)
     rooms = Room.objects.all()
 
@@ -73,4 +78,35 @@ def search_results(request):
     }
 
     return render(request, 'rooms/search_result.html', context)
+
+
+def book_room(request):
+    context = {
+
+    }
+    return render(request, 'rooms/book.html', context)
+
+
+class RoomAPIList(generics.ListCreateAPIView):
+
+    """ Methods GET POST """
+
+    queryset = Room.objects.all()
+    serializer_class = SerializerRoom
+
+
+class RoomAPIUpdate(generics.UpdateAPIView):
+
+    """Methods PUT PATCH """
+
+    queryset = Room.objects.all()
+    serializer_class = SerializerRoom
+
+
+class RoomAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+
+    """Methods GET PUT PATCH DELETE"""
+
+    queryset = Room.objects.all()
+    serializer_class = SerializerRoom
 

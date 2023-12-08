@@ -1,5 +1,9 @@
+import datetime
+
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db.models.signals import post_save, pre_save
+from django.dispatch import receiver
 
 
 class Room(models.Model):
@@ -21,24 +25,17 @@ class Room(models.Model):
         (TYPE_LUXE_VIP, "Люкс VIP"),
     )
 
-    PERSON_1 = "1 чел."
-    PERSON_2 = "2 чел."
-    PERSON_3 = "3 чел."
-    PERSON_4 = "4 чел."
-    PERSON_5 = "5 чел."
+    PERSON_1 = "1"
+    PERSON_2 = "2"
+    PERSON_3 = "3"
+    PERSON_4 = "4"
+    PERSON_5 = "5"
     persons_choices = (
-        (PERSON_1, "1 чел."),
-        (PERSON_2, "2 чел."),
-        (PERSON_3, "3 чел."),
-        (PERSON_4, "4 чел."),
-        (PERSON_5, "5 чел."),
-    )
-
-    RESERVATION_TRUE = 0
-    RESERVATION_FALSE = -1
-    reservation_choices = (
-        (RESERVATION_TRUE, 0),
-        (RESERVATION_FALSE, -1),
+        (PERSON_1, "1"),
+        (PERSON_2, "2"),
+        (PERSON_3, "3"),
+        (PERSON_4, "4"),
+        (PERSON_5, "5"),
     )
 
     name = models.CharField(max_length=256)
@@ -49,19 +46,38 @@ class Room(models.Model):
     room_image = models.ImageField(upload_to="rooms_image", blank=True, null=True)
     price_night = models.PositiveIntegerField(validators=[MinValueValidator(10), MaxValueValidator(10000)])
     full_description = models.TextField(max_length=2048)
-    reservation = models.IntegerField(choices=reservation_choices)
+    reservation = models.BooleanField(default=False)
+    check_in = models.DateField(default=None, null=True, blank=True)
+    check_out = models.DateField(default=None, null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        if self.reservation == -1:
-            free_rooms_count = Room.objects.filter(room_class=self.room_class, reservation=-1).count()
+        if self.reservation == 0:
+            free_rooms_count = Room.objects.filter(room_class=self.room_class, reservation=0).count()
             category_instance, created = Categories.objects.get_or_create(name=self.room_class)
             category_instance.free_rooms = free_rooms_count
+            category_instance.save()
+        else:
+            free_rooms_count = Room.objects.filter(room_class=self.room_class, reservation=-1).count()
+            category_instance, created = Categories.objects.get_or_create(name=self.room_class)
+            category_instance.free_rooms -= 1
             category_instance.save()
 
         super(Room, self).save(*args, **kwargs)
 
     def __str__(self):
         return f"№{self.pk}: Комната '{self.name}' типа {self.room_class} | цена/ночь: {self.price_night} | Бронь: {self.reservation}"
+
+
+@receiver(post_save, sender=Room)
+def update_free_rooms_count(sender, instance, **kwargs):
+    if instance.reservation == 0:
+        free_rooms_count = Room.objects.filter(room_class=instance.room_class, reservation=0).count()
+        category_instance, created = Categories.objects.get_or_create(name=instance.room_class)
+        category_instance.free_rooms = free_rooms_count
+        category_instance.save()
+
+
+post_save.connect(update_free_rooms_count, sender=Room)
 
 
 class Categories(models.Model):
