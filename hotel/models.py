@@ -1,9 +1,5 @@
-import datetime
-
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db.models.signals import post_save, pre_save
-from django.dispatch import receiver
 
 
 class Room(models.Model):
@@ -51,13 +47,13 @@ class Room(models.Model):
     check_out = models.DateField(default=None, null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        if self.reservation == 0:
-            free_rooms_count = Room.objects.filter(room_class=self.room_class, reservation=0).count()
+        if not self.reservation:
+            free_rooms_count = Room.objects.filter(room_class=self.room_class, reservation=False).count()
             category_instance, created = Categories.objects.get_or_create(name=self.room_class)
             category_instance.free_rooms = free_rooms_count
+            category_instance.free_rooms += 1
             category_instance.save()
         else:
-            free_rooms_count = Room.objects.filter(room_class=self.room_class, reservation=-1).count()
             category_instance, created = Categories.objects.get_or_create(name=self.room_class)
             category_instance.free_rooms -= 1
             category_instance.save()
@@ -66,18 +62,6 @@ class Room(models.Model):
 
     def __str__(self):
         return f"№{self.pk}: Комната '{self.name}' типа {self.room_class} | цена/ночь: {self.price_night} | Бронь: {self.reservation}"
-
-
-@receiver(post_save, sender=Room)
-def update_free_rooms_count(sender, instance, **kwargs):
-    if instance.reservation == 0:
-        free_rooms_count = Room.objects.filter(room_class=instance.room_class, reservation=0).count()
-        category_instance, created = Categories.objects.get_or_create(name=instance.room_class)
-        category_instance.free_rooms = free_rooms_count
-        category_instance.save()
-
-
-post_save.connect(update_free_rooms_count, sender=Room)
 
 
 class Categories(models.Model):

@@ -1,5 +1,6 @@
 from django.forms import model_to_dict
 from django.shortcuts import render, get_object_or_404
+from django.views import View
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -56,14 +57,13 @@ def index(request):
     return render(request, 'rooms/index.html', context)
 
 
-def search_results(request):
-    form = SearchForm(request.POST)
-    rooms = Room.objects.all()
+class SearchResultView(View):
+    template_name = 'rooms/search_result.html'
 
-    if request.method == 'POST':
-        print("POST")
+    def post(self, request, *args, **kwargs):
+        rooms = Room.objects.all()
+        form = SearchForm(request.POST)
         if form.is_valid():
-            print("Valid")
             room_class = form.cleaned_data['room_class']
             guests = form.cleaned_data['guests']
             if room_class:
@@ -71,13 +71,7 @@ def search_results(request):
             if guests:
                 rooms = rooms.filter(guests=guests)
 
-    context = {
-        'room': rooms,
-        'form': form,
-        'Room': Room.objects.all(),
-    }
-
-    return render(request, 'rooms/search_result.html', context)
+            return render(request, self.template_name, {'room': rooms, 'form': form, 'Room': Room.objects.all()})
 
 
 def book_room(request):
