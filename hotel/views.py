@@ -1,8 +1,6 @@
-from django.forms import model_to_dict
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
 from hotel.models import Room, Categories
 from .forms import SearchForm
@@ -11,50 +9,65 @@ from rest_framework import generics
 from hotel.serializers import SerializerRoom
 
 
-def about(request):
-    context = {
-        'title': 'О нас'
-    }
-    return render(request, 'rooms/about.html', context)
+class AboutView(View):
+    template_name = 'rooms/about.html'
+
+    def get(self, request):
+        context = {
+            'title': 'О нас'
+        }
+        return render(request, self.template_name, context)
 
 
-def feedback(request):
-    context = {
-        'title': 'Обратная связь'
-    }
-    return render(request, 'rooms/feedback.html', context)
+class FeedbackView(View):
+    template_name = 'rooms/feedback.html'
+
+    def get(self, request):
+        context = {
+            'title': 'Обратная связь'
+        }
+        return render(request, self.template_name, context)
 
 
-def hotel_rooms(request):
-    room = Room.objects.all()
-    categories = Categories.objects.all()
+class HotelRoomsView(View):
+    template_name = 'rooms/hotelrooms.html'
 
-    context = {
-        'Room': room,
-        'Categories': categories,
-    }
+    def get(self, request):
+        room = Room.objects.all()
+        categories = Categories.objects.all()
 
-    return render(request, 'rooms/hotelrooms.html', context)
+        context = {
+            'Room': room,
+            'Categories': categories,
+        }
 
-
-def in_detail_room(request, room_id):
-    context = {
-        'Room': Room.objects.all(),
-        'room_id': get_object_or_404(Room, id=room_id),
-    }
-    return render(request, 'rooms/indetail.html', context)
+        return render(request, self.template_name, context)
 
 
-def index(request):
-    type_choices = Room.type_choices
-    persons_choices = Room.persons_choices
+class InDetailRoomView(View):
+    template_name = 'rooms/indetail.html'
 
-    context = {
-        'type_choices': type_choices,
-        'persons_choices': persons_choices,
-    }
+    def get(self, request, room_id):
+        context = {
+            'Room': Room.objects.all(),
+            'room_id': get_object_or_404(Room, id=room_id),
+        }
+        return render(request, self.template_name, context)
 
-    return render(request, 'rooms/index.html', context)
+
+class IndexView(View):
+    template_name = 'rooms/index.html'
+
+    def get(self, request):
+        type_choices = Room.type_choices
+        persons_choices = Room.persons_choices
+
+        context = {
+            'type_choices': type_choices,
+            'persons_choices': persons_choices,
+        }
+
+        return render(request, self.template_name, context)
 
 
 class SearchResultView(View):
@@ -74,11 +87,14 @@ class SearchResultView(View):
             return render(request, self.template_name, {'room': rooms, 'form': form, 'Room': Room.objects.all()})
 
 
-def book_room(request):
-    context = {
+class BookRoomView(View):
+    template_name = 'rooms/book.html'
 
-    }
-    return render(request, 'rooms/book.html', context)
+    def get(self, request):
+        context = {
+
+        }
+        return render(request, self.template_name, context)
 
 
 class RoomAPIList(generics.ListCreateAPIView):
