@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from rest_framework.response import Response
+from rest_framework.viewsets import GenericViewSet
 
 from hotel.models import Room, Categories
 from .forms import SearchForm
 
-from rest_framework import generics
+from rest_framework import generics, viewsets, mixins
 from hotel.serializers import SerializerRoom
 
 
@@ -97,26 +98,12 @@ class BookRoomView(View):
         return render(request, self.template_name, context)
 
 
-class RoomAPIList(generics.ListCreateAPIView):
-
-    """ Methods GET POST """
-
-    queryset = Room.objects.all()
-    serializer_class = SerializerRoom
-
-
-class RoomAPIUpdate(generics.UpdateAPIView):
-
-    """Methods PUT PATCH """
+class RoomViewSet(mixins.CreateModelMixin,
+                  mixins.RetrieveModelMixin,
+                  mixins.UpdateModelMixin,
+                  mixins.DestroyModelMixin,
+                  mixins.ListModelMixin,
+                  GenericViewSet):
 
     queryset = Room.objects.all()
     serializer_class = SerializerRoom
-
-
-class RoomAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
-
-    """Methods GET PUT PATCH DELETE"""
-
-    queryset = Room.objects.all()
-    serializer_class = SerializerRoom
-
