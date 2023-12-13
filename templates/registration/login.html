@@ -1,0 +1,32 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static '/css/users.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <div class="login-form">
+        <h2>Авторизация</h2>
+        <form action="/login" method="post">
+            {% csrf_token %}
+            <label class='small md-1' for="{{ form.username.id_for_label }}">Имя пользователя</label>
+            {{ form.username }}
+            <label class='small md-1' for="{{ form.username.id_for_label }}">Пароль</label>
+            {{ form.password }}
+            <button type="submit">Войти</button>
+        </form>
+        <a href="/registration">Нет аккаунта? Зарегистрируйтесь</a>
+    </div>
+    {% if form.non_field_errors %}
+        <div class="error-registration">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+</body>
+</html>

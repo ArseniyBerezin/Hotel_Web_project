@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/hotelrooms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% block information %}
+     <section class="rooms">
+        <h1>Результаты поиска</h1>
+            {% if room %}
+                {% for rooms in room %}
+                    <article class="room">
+                        <h2>Номер {{ rooms.room_class }}</h2>
+
+                            <div class="room-info">
+                                <div class="room-text">
+                                    <p>Краткое описание номера:</p>
+                                    <p>Цена: {{ rooms.price_night }}$/ночь</p>
+                                    <p>Персон: {{ rooms.guests }}</p>
+                                    <p>Количество кроватей:{{ rooms.number_of_beds }}</p>
+                                    <li><a href="{% url 'indetail' rooms.id %}">Перейти</a></li>
+                                </div>
+                                <div class="room-photo">
+                                    <img src="{{ rooms.room_image.url }}" alt="Фотография номера">
+                                </div>
+                            </div>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>По вашему запросу комнат не найдено.</p>
+            {% endif %}
+     </section>
+{% endblock %}
+
+</body>
+</html>

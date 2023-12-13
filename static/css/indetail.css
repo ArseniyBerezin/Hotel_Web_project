@@ -1,0 +1,65 @@
+/* Стили для основной информации о номере */
+.room-details {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.room-info {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.room-photo img {
+    max-width: 800px; /* 2 раза больше */
+    height: auto;
+}
+
+.room-description {
+    margin-left: 20px;
+    background-color: #3C66A5; /* Голубой цвет фона */
+    padding: 40px; /* Увеличено в 2 раза */
+    border-radius: 10px; /* Скругленные углы */
+    color: #fff; /* Белый цвет текста */
+}
+
+.room-description h2 {
+    font-size: 36px; /* 2 раза больше */
+    margin-bottom: 20px; /* Увеличено в 2 раза */
+}
+
+.room-description p {
+    font-size: 18px; /* 2 раза больше */
+}
+
+.reserve-button {
+    background-color: #fff; /* Белый цвет фона */
+    color: #000; /* Черный цвет текста */
+    padding: 10px 20px; /* 2 раза больше */
+    border: 2px solid #000; /* Черная обводка */
+    border-radius: 5px;
+    font-size: 12px; /* 2 раза больше */
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Стили для развертываемого текстового поля */
+.expandable-text {
+    background-color: #3C66A5; /* Голубой цвет фона */
+    padding: 20px; /* 2 раза больше */
+    border-radius: 10px; /* Скругленные углы */
+}
+
+.expandable-text h3 {
+    font-size: 20px; /* 2 раза больше */
+    font-weight: bold;
+    margin-bottom: 20px; /* Увеличено в 2 раза */
+}
+
+.expandable-text p {
+    font-size: 13px; /* 2 раза больше */
+    margin-top: 20px;
+
+}

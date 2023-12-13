@@ -1,0 +1,156 @@
+{% load static %}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	{% block css %}
+	<link rel="stylesheet" href="{% static '/css/base_styles.css' %}">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	{% endblock %}
+</head>
+<body>
+<!-- navbar -->
+<div class="nav-container">
+	<div class="container">
+		<nav>
+				<ul class="navbar-left">
+					<a href="{% url 'index' %}">
+						<li>Русский язык</li>
+					</a>
+				</ul>
+			<form action="{% url 'index' %}" method="post">
+				{% csrf_token %}
+				<ul class="navbar-right">
+					<a href="{% url 'index' %}" style="font-weight: bold">
+						<li>Главная</li>
+					</a>
+					<a href="{% url 'hotelrooms' %}">
+						<li>Доступные номера</li>
+					</a>
+					<a href="#">
+						<li>Наши социальные сети</li>
+					</a>
+					<a href="{% url 'feedback' %}">
+						<li>Контакты</li>
+					</a>
+					<a href="{% url 'about' %}">
+						<li>О нас</li>
+					</a>
+					{% if user.is_authenticated %}
+						<a href="{% url 'profile' %}">Профиль</a>
+					{% else %}
+						<a href="{% url 'registration' %}">
+							<li>Регистрация</li>
+						</a>
+						<a>|</a>
+						<a href="{% url 'login' %}">
+							<li>Войти</li>
+						</a>
+					{% endif %}
+					{% if user.is_superuser or user.is_staff %}
+					<a href="{% url 'admin:index' %}">
+						<li>Админ-панель</li>
+					</a>
+					{% endif %}
+				</ul>
+			</form>
+		</nav>
+	</div>
+</div>
+<!-- navbar end -->
+
+<!-- top banner -->
+<div class="top-banner-block">
+	<div class="container">
+		<div class="top-logo">
+			<img src="{% static '/imgs/top_logo.png' %}"/>
+		</div>
+			<div class="top-banner-block">
+		<div class="top-banner-informationContainer">
+			<form method="post" action="{% url 'search_result' %}">
+				{% csrf_token %}
+
+				<div class="top-banner-row">
+					<label for="id_room_class">Класс номера</label>
+					<select id="id_room_class" name="room_class">
+						{% for choice in type_choices %}
+							<option value="{{ choice.0 }}">{{ choice.1 }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="top-banner-row">
+					<label for="check_in">Заезд</label>
+					<input type="date" id="check_in" name="check_in" placeholder="01.01.1970">
+				</div>
+				<div class="top-banner-row">
+					<label for="check_out">Выезд</label>
+					<input type="date" id="check_out" name="check_out" placeholder="01.01.1970">
+				</div>
+				<div class="top-banner-row">
+					<label for="{{ form.guests.id_for_label }}">Персоны</label>
+					<select id="{{ form.guests.id_for_label }}" name="guests">
+						{% for choice in persons_choices %}
+							<option value="{{ choice.0 }}">{{ choice.1 }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div>
+					<button type="submit" class="top-banner-findBtn">Найти</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
+</div>
+
+<!-- top banner end -->
+
+{% block information %} {% endblock %}
+
+{% block footer %} {% endblock %}
+
+{% block adversting %} {% endblock %}
+
+{% block location %} {% endblock %}
+
+<!-- footer -->
+<div class="container">
+	<hr class="custom-separator">
+
+	<footer>
+		<img src="{% static '/imgs/top_logo.png' %}" class="footer-logo" />
+
+		<ul class="footer-row-1">
+			<a href="{% url 'hotelrooms' %}">
+				<li>Доступные номера</li>
+			</a>
+			<a href="#">
+				<li>Наши социальные сети</li>
+			</a>
+			<a href="{% url 'feedback' %}">
+				<li>Поддержка</li>
+			</a>
+			<a href="{% url 'about' %}">
+				<li>О нас</li>
+			</a>
+		</ul>
+		<hr class="custom-separator">
+		<p class="footer-p-safe">Безопасность</p>
+		<p>Наши партнёры по проведению платежей гарантируют безопасность ваших данных своей мировой репутацией.</p>
+
+		<div class="footer-payment-systems">
+			<img src="{% static '/imgs/visa.svg' %}" />
+			<img src="{% static '/imgs/mastercard.svg' %}" />
+			<img src="{% static '/imgs/mir.svg' %}" />
+			<img src="{% static '/imgs/thawte.svg' %}" />
+			<img src="{% static '/imgs/dss.svg' %}" />
+		</div>
+
+		<hr class="custom-separator">
+		<p>Политика хранения и обработки персональных данных</p>
+	</footer>
+</div>
+<!-- footer end -->
+</body>
+</html>
